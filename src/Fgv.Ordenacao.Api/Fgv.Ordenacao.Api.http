@@ -1,0 +1,6 @@
+@Fgv.Ordenacao.Api_HostAddress = http://localhost:5220
+
+GET {{Fgv.Ordenacao.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

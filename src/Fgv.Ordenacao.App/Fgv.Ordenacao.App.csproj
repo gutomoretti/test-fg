@@ -5,7 +5,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="..\..\config\ordering.json">
+    <None Include="..\..\config\ordering.json">
       <Link>ordering.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

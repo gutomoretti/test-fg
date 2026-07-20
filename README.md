@@ -15,6 +15,7 @@ Implementação da avaliação técnica da FGV para um serviço de ordenação c
 ## Estrutura
 
 - `src/Fgv.Ordenacao`: biblioteca principal do serviço.
+- `src/Fgv.Ordenacao.App`: aplicativo de console para execução da demonstração.
 - `tests/Fgv.Ordenacao.Tests`: testes automatizados.
 
 ## Comandos previstos
@@ -22,4 +23,5 @@ Implementação da avaliação técnica da FGV para um serviço de ordenação c
 ```text
 dotnet build --configuration Release
 dotnet test --configuration Release
+dotnet run --project src/Fgv.Ordenacao.App --configuration Release
 ```

@@ -3,6 +3,8 @@ using Fgv.Ordenacao;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddProblemDetails();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var configurationPath = Path.Combine(builder.Environment.ContentRootPath, "ordering.json");
 var orderConfiguration = OrderConfiguration.FromJsonFile(configurationPath);
@@ -11,6 +13,12 @@ builder.Services.AddSingleton<BooksOrderer>(new ConfiguredBooksOrderer(orderConf
 var app = builder.Build();
 
 app.UseExceptionHandler();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.MapPost("/books/order", (OrderBooksRequest? request, BooksOrderer orderer) =>
 {

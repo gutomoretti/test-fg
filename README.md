@@ -1,6 +1,6 @@
 # Serviço de ordenação de livros
 
-Implementação da avaliação técnica da FGV para um serviço de ordenação configurável.
+Implementação da avaliação técnica para um serviço de ordenação configurável.
 
 ## Decisões iniciais
 

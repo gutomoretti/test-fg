@@ -1,6 +1,0 @@
-{
-  "criteria": [
-    { "attribute": "Title", "direction": "Ascending" },
-    { "attribute": "AuthorName", "direction": "Ascending" }
-  ]
-}

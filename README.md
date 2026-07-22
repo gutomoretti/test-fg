@@ -17,6 +17,8 @@ Implementação da avaliação técnica da FGV para um serviço de ordenação c
 - `src/Fgv.Ordenacao`: biblioteca principal do serviço.
 - `src/Fgv.Ordenacao.Api`: API HTTP do serviço de ordenação.
 - `tests/Fgv.Ordenacao.Tests`: testes automatizados.
+- `config/ordering.json`: critérios de ordenação, alteráveis sem recompilar o código.
+- `docs`: documentação técnica e diagrama UML exigidos pela avaliação.
 
 ## Comandos previstos
 
@@ -24,8 +26,40 @@ Implementação da avaliação técnica da FGV para um serviço de ordenação c
 dotnet build --configuration Release
 dotnet test --configuration Release
 dotnet run --project src/Fgv.Ordenacao.Api --configuration Release
+dotnet publish src/Fgv.Ordenacao.Api/Fgv.Ordenacao.Api.csproj --configuration Release --output artifacts/publish/api
 ```
 
 ## Endpoint
 
 `POST /books/order` recebe um conjunto de livros em JSON e retorna o conjunto ordenado conforme `config/ordering.json`.
+
+Exemplo de requisição:
+
+```json
+{
+  "books": [
+    {
+      "title": "Java How to Program",
+      "authorName": "Deitel & Deitel",
+      "editionYear": 2007
+    }
+  ]
+}
+```
+
+Em ambiente de desenvolvimento, a documentação interativa está disponível em `/swagger`.
+
+Entradas nulas, listas vazias e configurações inválidas retornam `400 Bad Request` na API. Na biblioteca, essas situações são representadas por `OrdenacaoException`.
+
+## Validação
+
+A suíte contém testes unitários da regra de ordenação e testes de integração do endpoint HTTP. A execução atual possui 10 testes aprovados.
+
+## Entrega
+
+Os arquivos técnicos estão em `docs`:
+
+- `documentacao-tecnica.docx`: descrição da arquitetura e das decisões.
+- `uml-ordenacao-livros.png`: diagrama de classes UML.
+
+O projeto usa .NET 8 e deve ser executado com o SDK/runtime correspondente instalado. O comando `dotnet publish` gera o pacote da API para execução fora da IDE.
